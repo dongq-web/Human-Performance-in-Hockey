@@ -1,0 +1,37 @@
+rpi <- read.csv('possesion_event_q1_rpi.csv', fileEncoding="UTF-8-BOM")
+rpia <- rpi$RPIA
+rpib <- rpi$RPIB
+oppo <- read.csv('possesion_event_q1_oppo.csv', fileEncoding="UTF-8-BOM")
+oppoa <- oppo$OPPOA
+oppob <- oppo$OPPOB
+shot_for <- read.csv('possesion_event_q1_for.csv', fileEncoding="UTF-8-BOM")
+shot_for <- shot_for$Shot_for
+shot_against <- read.csv('possesion_event_q1_against.csv', fileEncoding="UTF-8-BOM")
+shot_against <- shot_against$Shot_Against
+
+rpi_shot <- 0
+for (i in (1:length(shot_for)))
+{
+  for ( j in (1:length(rpia)))
+  {
+    if (rpia[j] < shot_for[i] && rpib[j] > shot_for[i])
+    {
+      rpi_shot <- rpi_shot +1
+    }
+  }
+}
+oppo_shot <- 0
+for (i in (1:length(shot_against)))
+{
+  for ( j in (1:length(oppoa)))
+  {
+    if (oppoa[j] < shot_against[i] && oppob[j] > shot_against[i])
+    {
+      oppo_shot <- oppo_shot +1
+    }
+  }
+}
+
+rpi_shot
+oppo_shot
+
