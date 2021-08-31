@@ -1,0 +1,1 @@
+shift = read.csv('game_shifts.csv', T)
